@@ -144,7 +144,8 @@ select authors.first_name || ' ' || authors.last_name  as Author , books.name fr
 --18
 select languages.language, count(books) as bookcount from books inner join languages on books.language_id=languages.id group by  languages.language order by bookcount;
 --19
-select
+select publishers.name ,round(avg(books.price)) from books inner join publishers on books.publisher_id=publishers.id group by publishers.name;
 --20
 select books.name ,books.published_year, authors.first_name,authors.last_name from books inner join authors on books.author_id=books.author_id where books.published_year between '1-01-2010'and '12-31-2015';
 --21
+select authors.first_name,authors.last_name, sum(books.price)  from books  inner join authors  on books.author_id=authors.id group by authors.first_name, authors.last_name;
